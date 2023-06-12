@@ -68,18 +68,18 @@ const (
 )
 
 type (
-	serverTransportKey struct{}
+	ServerTransportKey struct{}
 	clientTransportKey struct{}
 )
 
 // NewServerContext returns a new Context that carries value.
 func NewServerContext(ctx context.Context, tr Transporter) context.Context {
-	return context.WithValue(ctx, serverTransportKey{}, tr)
+	return context.WithValue(ctx, ServerTransportKey{}, tr)
 }
 
 // FromServerContext returns the Transport value stored in ctx, if any.
 func FromServerContext(ctx context.Context) (tr Transporter, ok bool) {
-	tr, ok = ctx.Value(serverTransportKey{}).(Transporter)
+	tr, ok = ctx.Value(ServerTransportKey{}).(Transporter)
 	return
 }
 
